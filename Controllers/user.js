@@ -339,7 +339,7 @@ exports.forgotPassword = async (req, res) => {
         );
         // Store OTP
         await EmailOTP.create({
-          validTill: new Date().getTime() + parseInt(process.env.OTP_VALIDITY),
+          validTill: new Date().getTime() + parseInt(process.env.OTP_VALIDITY_IN_MILLISECONDS),
           otp: otp,
           receiverId: user.id,
           email,
