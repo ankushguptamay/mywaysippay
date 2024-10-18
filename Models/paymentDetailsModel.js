@@ -28,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
       userId: {
         type: DataTypes.STRING,
       },
+      method: {
+        type: DataTypes.STRING,
+      },
+      vpa: {
+        type: DataTypes.STRING,
+      },
       verify: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

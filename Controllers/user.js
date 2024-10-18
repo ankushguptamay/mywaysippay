@@ -129,16 +129,12 @@ exports.paymentDetails = async (req, res) => {
 
 exports.webHook = async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.body.payload);
-    console.log(req.body.payload.payment);
-    console.log(req.body.payload.payment.entity);
     // Price
     const amount = req.body.payload.payment.entity.amount;
     // On Success payment
     if (req.body.event === "payment.captured") {
       const email = req.body.payload.payment.entity.email;
-      const contact = req.body.payload.payment.entity.contact;
+      const contact = req.body.payload.payment.entity.notes.phone;
       // Find user
       let isUser = await User.findOne({
         where: {
@@ -173,6 +169,7 @@ exports.webHook = async (req, res) => {
         isUser = await User.create({
           email: email,
           mobileNumber: contact,
+          name: req.body.payload.payment.entity.notes.name,
           password: bcPassword,
         });
         // Set HTML content for email
@@ -202,7 +199,9 @@ exports.webHook = async (req, res) => {
         verify: true,
         status: "paid",
         amount: amount / 100,
+        method: req.body.payload.payment.entity.method,
         currency: req.body.payload.payment.entity.currency,
+        vpa: req.body.payload.payment.entity.vpa,
         razorpayOrderId: req.body.payload.payment.entity.order_id,
         razorpayTime: req.body.payload.payment.entity.created_at,
         razorpayPaymentId: req.body.payload.payment.entity.id,
@@ -339,7 +338,9 @@ exports.forgotPassword = async (req, res) => {
         );
         // Store OTP
         await EmailOTP.create({
-          validTill: new Date().getTime() + parseInt(process.env.OTP_VALIDITY_IN_MILLISECONDS),
+          validTill:
+            new Date().getTime() +
+            parseInt(process.env.OTP_VALIDITY_IN_MILLISECONDS),
           otp: otp,
           receiverId: user.id,
           email,
