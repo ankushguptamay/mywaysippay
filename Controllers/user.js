@@ -322,7 +322,7 @@ exports.forgotPassword = async (req, res) => {
         const options = {
           brevoEmail: finaliseEmailCredential.email,
           brevoKey: finaliseEmailCredential.EMAIL_API_KEY,
-          headers,
+          headers: { "OTP for verification": "123A" },
           subject: "Thank You",
           htmlContent: `OTP ${otp}`,
           userEmail: email,
