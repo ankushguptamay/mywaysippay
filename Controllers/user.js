@@ -135,7 +135,7 @@ exports.webHook = async (req, res) => {
     // On Success payment
     if (req.body.event === "payment.captured") {
       const email = req.body.payload.payment.entity.email;
-      const contact = req.body.payload.payment.entity.notes.phone;
+      const contact = req.body.payload.payment.entity.notes.whatsapp_number;
       // Find user
       let isUser = await User.findOne({
         where: {
