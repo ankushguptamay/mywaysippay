@@ -32,14 +32,14 @@ exports.login = async (req, res) => {
     if (!user) {
       return res.status(400).send({
         success: false,
-        message: "Sorry! try to login with currect credentials.",
+        message: "Sorry! try to login with correct credentials.",
       });
     }
     const compairPassword = await bcrypt.compare(password, user.password);
     if (!compairPassword) {
       return res.status(400).send({
         success: false,
-        message: "Sorry! try to login with currect credentials.",
+        message: "Sorry! try to login with correct credentials.",
       });
     }
 
@@ -148,15 +148,15 @@ exports.webHook = async (req, res) => {
                     <div style="width: 80%; margin: auto; overflow: hidden;">
                     </div>
                     <div style="width: 80%; margin: auto;">
-                        <h2 style="text-align: center;">Welcome to the My Way SIP!</h2>
-                        <p>Thank you to purchase course.</p>
-                        <p><strong>Login Url:</strong> https://courses.affiliateindians.com/sign_in</p>
+                        <h2 style="text-align: center;">Welcome to the Brokerji.com!</h2>
+                        <p>Thank you to purchase our stock.</p>
+                          <p><strong>Login Url:</strong>https://services.brokerji.com/</p>
                         <p><strong>Email:</strong> ${email}</p>
                         <p>Make sure you save this email in case you ever need it.</p>
                         <p>See you on the inside!</p>
-                        <p>The Affiliate Indians Team</p>
+                        <p>The Brokerji Team</p>
                         <p>
-                            <strong>IMPORTANT MESSAGE:</strong> We are dedicated to customer support, and solving your problems. If you experience any technical issues with our system, compensation plan, or have a billing question -- please email us at <a href="mailto:support@affiliateindians.com">support@affiliateindians.com</a>
+                        <strong>IMPORTANT MESSAGE:</strong> We are dedicated to customer support, and solving your problems. If you experience any technical issues with our system, compensation plan, or have a billing question -- please email us at <a href="mailto:support@brokerji.com">support@brokerji.com</a>
                         </p>
                     </div>
                 </body>`;
@@ -175,23 +175,23 @@ exports.webHook = async (req, res) => {
         });
         // Set HTML content for email
         htmlContent = `
-                    <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333;">
-                        <div style="width: 80%; margin: auto; overflow: hidden;">
-                        </div>
-                        <div style="width: 80%; margin: auto;">
-                            <h2 style="text-align: center;">Welcome to the Affiliate Indians System!</h2>
-                            <p>Below are your login details for the Affiliate Indians Portal.</p>
-                            <p><strong>Login Url:</strong> https://courses.affiliateindians.com/sign_in</p>
-                            <p><strong>Email:</strong> ${email}</p>
-                            <p><strong>Password:</strong>  ${password}</p>
-                            <p>Make sure you save this email in case you ever need it.</p>
-                            <p>See you on the inside!</p>
-                            <p>The Affiliate Indians Team</p>
-                            <p>
-                                <strong>IMPORTANT MESSAGE:</strong> We are dedicated to customer support, and solving your problems. If you experience any technical issues with our system, compensation plan, or have a billing question -- please email us at <a href="mailto:support@affiliateindians.com">support@affiliateindians.com</a>
-                            </p>
-                        </div>
-                    </body>`;
+                   <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333;">
+                    <div style="width: 80%; margin: auto; overflow: hidden;">
+                    </div>
+                    <div style="width: 80%; margin: auto;">
+                        <h2 style="text-align: center;">Welcome to the Brokerji.com</h2>
+                        <p>Thank you to purchase our stock.</p>
+                        <p><strong>Login Url:</strong>https://services.brokerji.com/</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Password :</strong> ${password}</p>
+                        <p>Make sure you save this email in case you ever need it.</p>
+                        <p>See you on the inside!</p>
+                        <p>The Brokerji Team</p>
+                        <p>
+                            <strong>IMPORTANT MESSAGE:</strong> We are dedicated to customer support, and solving your problems. If you experience any technical issues with our system, compensation plan, or have a billing question -- please email us at <a href="mailto:support@brokerji.com">support@brokerji.com</a>
+                        </p>
+                    </div>
+                </body>`;
       }
 
       // Payment Details
@@ -286,7 +286,7 @@ exports.forgotPassword = async (req, res) => {
     if (!user) {
       return res.status(400).send({
         success: false,
-        message: "Sorry! try to login with currect credentials.",
+        message: "Sorry! try to login with correct credentials.",
       });
     }
     // Update sendEmail 0 every day
@@ -418,7 +418,7 @@ exports.changePassword = async (req, res) => {
     if (!user) {
       return res.status(400).send({
         success: false,
-        message: "Sorry! try to login with currect credentials.",
+        message: "Sorry! try to login with correct credentials.",
       });
     }
     const salt = await bcrypt.genSalt(10);
