@@ -325,7 +325,31 @@ exports.forgotPassword = async (req, res) => {
           brevoKey: finaliseEmailCredential.EMAIL_API_KEY,
           headers: { "OTP for verification": "123A" },
           subject: "Thank You",
-          htmlContent: `OTP ${otp}`,
+          htmlContent: `<body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f4;">
+
+    <div style="max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #333;">Dear ${user.name}</h2>
+
+        <p>We received a request to reset your password for your account at <strong>Brokerji.com</strong>. To proceed, please use the following One-Time Password (OTP) to verify your email address:</p>
+
+        <p style="font-size: 24px; font-weight: bold; color: #007BFF;">Your OTP is: ${otp}</p>
+
+        <p>This OTP is valid for <strong>10 minutes</strong>. Please enter it on the password reset page to continue.</p>
+
+        <p>For your security, do not share this code with anyone, as it is intended solely for your use.</p>
+
+        <p>If you did not request a password reset, please disregard this email.</p>
+
+        <p>Thank you,<br>
+        <strong>Brokerji.com Team</strong></p>
+
+        <div style="margin-top: 20px; font-size: 12px; color: #777;">
+            <p>Contact Us: <a href="mailto:support@brokerji.com" style="color: #007BFF; text-decoration: none;">support@brokerji.com</a><br>
+            Website: <a href="https://brokerji.com" style="color: #007BFF; text-decoration: none;">brokerji.com</a></p>
+        </div>
+    </div>
+
+</body>`,
           userEmail: email,
           userName: "User",
         };
