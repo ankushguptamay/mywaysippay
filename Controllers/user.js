@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
     if (!user) {
       return res.status(400).send({
         success: false,
-        message: "Sorry! try to login with correct credentials.",
+        message: "Sorry! try to login with correct credentials..",
       });
     }
     const compairPassword = await bcrypt.compare(password, user.password);
@@ -401,7 +401,7 @@ exports.forgotPasswordOtpVerification = async (req, res) => {
       });
     }
     // Checking is user present or not
-    const user = await User.findOne({ where: { id: receiverId } });
+    const user = await User.findOne({ where: { id: isOtp.receiverId } });
     if (!user) {
       return res.status(400).send({
         success: false,
